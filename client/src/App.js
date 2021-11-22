@@ -1,13 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import Form from './components/Form';
+import React from 'react';
 
-function App() {
+const App = () => {
   return (
     <div>
-      <Form />
+      <h1>App</h1>
     </div>
   );
-}
+};
 
 export default App;

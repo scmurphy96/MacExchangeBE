@@ -5,11 +5,13 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 import countryRoutes from './api/countries.js';
+const exchangeRateRoutes = require('./api/exchangeRates');
 
 const app = express();
 dotenv.config();
 
 app.use('/countries', countryRoutes);
+app.use('/exchangerates', exchangeRateRoutes);
 
 // body parsing middleware
 app.use(express.json());

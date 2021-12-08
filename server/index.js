@@ -1,11 +1,11 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import morgan from 'morgan';
-import dotenv from 'dotenv';
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
 
-import countryRoutes from './api/countries.js';
-const exchangeRateRoutes = require('./api/exchangeRates');
+const countryRoutes = require('./api/countries.js');
+const exchangeRateRoutes = require('./api/exchangeRates.js');
 
 const app = express();
 dotenv.config();

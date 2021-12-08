@@ -1,6 +1,6 @@
-import Country from '../models/country.js';
+const Country = require('../models/country.js');
 
-export const getCountries = async (req, res, next) => {
+const getCountries = async (req, res, next) => {
   try {
     const countries = await Country.find();
     res.status(200).send(countries);
@@ -8,3 +8,5 @@ export const getCountries = async (req, res, next) => {
     res.status(404).send({ message: error.message });
   }
 };
+
+module.exports = getCountries;

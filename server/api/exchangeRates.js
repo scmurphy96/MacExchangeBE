@@ -1,5 +1,5 @@
-import express from 'express';
-import { getExchangeRates } from '../controllers/exchangeRates.js';
+const express = require('express');
+const getExchangeRates = require('../controllers/exchangeRates.js');
 
 const router = express.Router();
 

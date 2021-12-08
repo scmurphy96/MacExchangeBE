@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const countrySchema = mongoose.Schema({
   name: String,
@@ -9,4 +9,4 @@ const countrySchema = mongoose.Schema({
 
 const Country = mongoose.model('Country', countrySchema);
 
-export default Country;
+module.exports = Country;

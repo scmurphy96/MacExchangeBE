@@ -1,13 +1,15 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-export const getExchangeRates = async (req, res, next) => {
+const getExchangeRates = async (req, res, next) => {
   try {
     const rate = await fetch(
       `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=${req.params.id}&apikey=${process.env.API_KEY}`
     );
     const data = await rate.json();
-    res.send(data);
+    res.status(200).send(data);
   } catch (err) {
-    next(err);
+    res.status(404).send({ message: err.message });
   }
 };
+
+module.exports = getExchangeRates;

@@ -1,7 +1,7 @@
-import Country from '../models/country.js';
-import csvToJson from 'csvtojson';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+const Country = require('../models/country.js');
+const csvToJson = require('csvtojson');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 const bigMacData = 'bigMacData.csv';
 

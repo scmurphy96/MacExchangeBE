@@ -3,7 +3,7 @@ const csvToJson = require('csvtojson');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-const bigMacData = 'bigMacData.csv';
+const bigMacData = 'big-mac-2022-01-01.csv';
 
 dotenv.config();
 

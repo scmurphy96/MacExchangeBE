@@ -4,14 +4,13 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 
-const countryRoutes = require('./api/countries.js');
-const exchangeRateRoutes = require('./api/exchangeRates.js');
+const api = require('./api');
 
-const app = express();
 dotenv.config();
 
-app.use('/countries', countryRoutes);
-app.use('/exchangerates', exchangeRateRoutes);
+const app = express();
+
+app.use('/api', api);
 
 // body parsing middleware
 app.use(express.json());
@@ -22,11 +21,18 @@ app.use(cors());
 // logging middleware
 app.use(morgan('dev'));
 
-const PORT = process.env.PORT;
+// error handling endware
+app.use((err, req, res, next) => {
+  if (process.env.NODE_ENV !== 'test') console.error(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal server error');
+});
 
+// db connection
+const PORT = process.env.PORT;
+const CONNECTION_URL = process.env.CONNECTION_URL;
 async function dbSync() {
   try {
-    await mongoose.connect(process.env.CONNECTION_URL);
+    await mongoose.connect(CONNECTION_URL);
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
   } catch (error) {
     console.log(error.message);
